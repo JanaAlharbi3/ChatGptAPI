@@ -1,5 +1,6 @@
+
 document.getElementById("submit-btn").addEventListener("click",function(){
-    let value=document.getElementById("word-input").value;
+    //let value=document.getElementById("word-input").value;
     sendToGpt();
 });
 
@@ -11,13 +12,13 @@ function sendToGpt(){
     let body={
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: value }],
-        temperature: "1",
-    }
+        temperature: 1,
+    };
     let headers = {
-        Authorization: "Bearer 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",
+        Authorization: "Bearer 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",
       };
     axios
-    .post("https://api.openai.com/v1/completions", body, {
+    .post("https://api.openai.com/v1/chat/completions", body, {
       headers: headers,
     })
     .then((response) => {
@@ -25,4 +26,6 @@ function sendToGpt(){
         document.getElementById("reply-content").textContent = reply;
       });
   }
+
+
   
